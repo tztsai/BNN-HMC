@@ -54,6 +54,7 @@ def set_up_jax(tpu_ip, use_float64):
 
 
 def get_task_specific_fns(task, data_info):
+  print("TASK:", task)
   if task == data_utils.Task.CLASSIFICATION:
     likelihood_fn = losses.make_xent_log_likelihood
     ensemble_fn = (
