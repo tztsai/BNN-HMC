@@ -32,7 +32,7 @@ import jax
 import copy
 from jax import numpy as jnp
 
-from bnn_hmc.utils import tree_utils
+from utils import tree_utils
 
 
 def inv_softplus(x):

@@ -32,19 +32,19 @@ import os
 from jax import numpy as jnp
 import numpy as onp
 import jax
-import argparse
-from haiku._src.data_structures import FlatMapping
-import functools
 import tqdm
+import argparse
+import functools
+# from haiku._src.data_structures import FlatMapping
 
-from bnn_hmc.utils import checkpoint_utils
-from bnn_hmc.utils import cmd_args_utils
-from bnn_hmc.utils import precision_utils
-from bnn_hmc.utils import train_utils
-from bnn_hmc.utils import tree_utils
-from bnn_hmc.utils import data_utils
-from bnn_hmc.utils import models
-from bnn_hmc.utils import losses
+from utils import checkpoint_utils
+from utils import cmd_args_utils
+from utils import precision_utils
+from utils import train_utils
+from utils import tree_utils
+from utils import data_utils
+from utils import models
+from utils import losses
 
 from matplotlib import pyplot as plt
 

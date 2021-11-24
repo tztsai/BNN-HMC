@@ -191,6 +191,10 @@ def train_model():
     print(table)
 
 
-if __name__ == "__main__":
+def run():
   script_utils.print_visible_devices()
   train_model()
+
+
+if __name__ == "__main__":
+    run()

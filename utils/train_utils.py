@@ -36,12 +36,12 @@ import numpy as onp
 import functools
 from jax.config import config
 
-from bnn_hmc.core import hmc
-from bnn_hmc.utils import data_utils
-from bnn_hmc.utils import losses
-from bnn_hmc.utils import tree_utils
-from bnn_hmc.utils import ensemble_utils
-from bnn_hmc.utils import metrics
+from core import hmc
+from utils import data_utils
+from utils import losses
+from utils import tree_utils
+from utils import ensemble_utils
+from utils import metrics
 
 
 def set_up_jax(tpu_ip, use_float64):
@@ -54,7 +54,6 @@ def set_up_jax(tpu_ip, use_float64):
 
 
 def get_task_specific_fns(task, data_info):
-  print("TASK:", task)
   if task == data_utils.Task.CLASSIFICATION:
     likelihood_fn = losses.make_xent_log_likelihood
     ensemble_fn = (

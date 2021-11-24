@@ -35,13 +35,13 @@ import jax
 import tensorflow.compat.v2 as tf
 import argparse
 
-from bnn_hmc.utils import checkpoint_utils
-from bnn_hmc.utils import cmd_args_utils
-from bnn_hmc.utils import logging_utils
-from bnn_hmc.utils import train_utils
-from bnn_hmc.utils import optim_utils
-from bnn_hmc.utils import script_utils
-from bnn_hmc.core import vi
+from utils import checkpoint_utils
+from utils import cmd_args_utils
+from utils import logging_utils
+from utils import train_utils
+from utils import optim_utils
+from utils import script_utils
+from core import vi
 
 parser = argparse.ArgumentParser(description="Run MFVI training")
 cmd_args_utils.add_common_flags(parser)
@@ -221,6 +221,10 @@ def train_model():
     print(table)
 
 
-if __name__ == "__main__":
+def run():
   script_utils.print_visible_devices()
   train_model()
+
+
+if __name__ == "__main__":
+    run()

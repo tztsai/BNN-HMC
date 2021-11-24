@@ -34,13 +34,13 @@ import jax
 import argparse
 from collections import OrderedDict
 
-from bnn_hmc.core import sgmcmc
-from bnn_hmc.utils import checkpoint_utils
-from bnn_hmc.utils import cmd_args_utils
-from bnn_hmc.utils import logging_utils
-from bnn_hmc.utils import train_utils
-from bnn_hmc.utils import optim_utils
-from bnn_hmc.utils import script_utils
+from core import sgmcmc
+from utils import checkpoint_utils
+from utils import cmd_args_utils
+from utils import logging_utils
+from utils import train_utils
+from utils import optim_utils
+from utils import script_utils
 
 parser = argparse.ArgumentParser(description="Run SG-MCMC training")
 cmd_args_utils.add_common_flags(parser)
@@ -242,6 +242,10 @@ def train_model():
     print(table)
 
 
-if __name__ == "__main__":
+def run():
   script_utils.print_visible_devices()
   train_model()
+
+
+if __name__ == "__main__":
+    run()

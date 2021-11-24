@@ -32,7 +32,7 @@ import math
 import jax
 import jax.numpy as jnp
 
-from bnn_hmc.utils import tree_utils
+from utils import tree_utils
 
 
 def make_xent_log_likelihood(temperature):
