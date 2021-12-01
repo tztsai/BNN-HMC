@@ -6,7 +6,8 @@ import importlib
 # sys.path.append('..')
 
 argparser = argparse.ArgumentParser(
-    usage="python run.py {hmc,sgd,sgmcmc,vi} [--debug] [script_params...]"
+    usage="""python run.py {hmc,sgd,sgmcmc,vi} [--debug] [--params...]
+example: python run.py hmc --debug --seed=0 --temperature=1. --dir=runs/hmc/mnist_subset160 --dataset_name=mnist --model_name=mlp_classification --step_size=3.e-5 --trajectory_len=1.5 --num_iterations=100 --subset_train_to=160"""
 )
 argparser.add_argument('model', help='Name of the model to train',
                        choices=['hmc', 'sgd', 'sgmcmc', 'vi'])
