@@ -35,6 +35,8 @@ import tensorflow.compat.v2 as tf
 
 def add_common_flags(parser):
   parser.add_argument(
+      '-d', '--debug', action='store_true')
+  parser.add_argument(
       "--tpu_ip",
       type=str,
       default=None,

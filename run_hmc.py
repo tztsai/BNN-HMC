@@ -28,8 +28,10 @@
 # limitations under the License.
 # coding=utf-8
 """Run an Hamiltonian Monte Carlo chain on a cloud TPU."""
-import argparse
 import os
+import debugpy
+import argparse
+from tqdm import trange
 
 import jax
 from jax import numpy as jnp
@@ -70,6 +72,13 @@ parser.add_argument(
     help="If set, Metropolis Hastings correction is ignored")
 
 args = parser.parse_args()
+
+if args.debug:  # VSCode remote attach debugging
+    debugpy.listen(5678)
+    print('Waiting for VSCode debugger connection...')
+    debugpy.wait_for_client()
+    print('VSCode debugger connected.')
+
 train_utils.set_up_jax(args.tpu_ip, args.use_float64)
 
 
@@ -131,7 +140,7 @@ def train_model():
   ]), ("Gradient data types {} do not match specified data type {}".format(
       grad_types, dtype))
 
-  for iteration in range(start_iteration, args.num_iterations):
+  for iteration in trange(start_iteration, args.num_iterations):
 
     in_burnin = (iteration < args.num_burn_in_iterations)
     do_mh_correction = (not args.no_mh) and (not in_burnin)
