@@ -164,6 +164,7 @@ def make_hmc_update(net_apply, log_likelihood_fn, log_prior_fn,
       in_axes=(0, None, 0, None, None, None, None, None, None))
   def pmap_update(dataset, params, net_state, log_likelihood, state_grad, key,
                   step_size, n_leapfrog_steps, do_mh_correction):
+    key = onp.array(key)
     (params, net_state, log_likelihood, state_grad, step_size, accept_prob,
      accepted) = hmc_update(
          dataset,
@@ -188,6 +189,20 @@ def make_hmc_update(net_apply, log_likelihood_fn, log_prior_fn,
         "The trajectory length results in number of leapfrog steps {} which is "
         "higher than max_n_leapfrog {}".format(n_leapfrog,
                                                max_num_leapfrog_steps))
+
+    if hasattr(log_likelihood, "item"):
+      log_likelihood = log_likelihood.item()
+    if hasattr(step_size, "item"):
+      step_size = step_size.item()
+    if hasattr(n_leapfrog, "item"):
+      n_leapfrog = n_leapfrog.item()
+    if hasattr(trajectory_len, "item"):
+      trajectory_len = trajectory_len.item()
+    if hasattr(do_mh_correction, "item"):
+      do_mh_correction = do_mh_correction.item()
+
+    if hasattr(key, '__len__'):
+      key = tuple(key)
 
     (params, net_state, log_likelihood, state_grad, step_size, key, accept_prob,
      accepted) = pmap_update(dataset, params, net_state, log_likelihood,
