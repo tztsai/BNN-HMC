@@ -149,15 +149,18 @@ def run_visualization():
     log_prob = likelihood + prior
     return log_prob, likelihood, prior
 
-  params1 = load_params(args.checkpoint1)
-  params2 = load_params(args.checkpoint2)
-  params3 = load_params(args.checkpoint3)
+  params = [os.path.join(args.dir, getattr(args, ckpt))
+            for ckpt in 'checkpoint' + onp.char.array(list('123'))]
+
+  # params1 = load_params(args.checkpoint1)
+  # params2 = load_params(args.checkpoint2)
+  # params3 = load_params(args.checkpoint3)
 
   # for params in [params1, params2, params3]:
   #   print(jax.pmap(eval, axis_name='i', in_axes=(None, None, 0))
   #         (params, net_state, train_set))
 
-  u_vec, u_norm, v_vec, v_norm, origin = get_u_v_o(params1, params2, params3)
+  u_vec, u_norm, v_vec, v_norm, origin = get_u_v_o(*params)
 
   u_ts = onp.linspace(args.limit_left, args.limit_right, args.grid_size)
   v_ts = onp.linspace(args.limit_bottom, args.limit_top, args.grid_size)

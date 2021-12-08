@@ -1,0 +1,1 @@
+run_hmc.py --seed=0 --weight_decay=1. --temperature=1. --dir=runs/hmc/cifar10 --dataset_name=cifar10 --model_name=resnet20_frn_swish --step_size=1e-5 --trajectory_len=0.24 --max_num_leapfrog_steps=10000 --num_burn_in_iterations=10

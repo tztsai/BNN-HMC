@@ -1,0 +1,1 @@
+python make_posterior_surface_plot.py --dir runs/hmc/mnist_subset160/model_mlp_classification_wd_1.0_stepsize_3e-05_trajlen_1.5_burnin_10_mh_True_temp_1.0_seed_0 --checkpoint1 model_step_10.pt --checkpoint2 model_step_50.pt --checkpoint3 model_step_90.pt
