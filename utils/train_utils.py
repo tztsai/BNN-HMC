@@ -201,12 +201,11 @@ def make_hmc_update(net_apply, log_likelihood_fn, log_prior_fn,
     return (params, net_state, log_likelihood, state_grad, step_size, key,
             accept_prob, accepted)
 
-  def get_log_prob_and_grad(params, net_state, dataset):
-    pmap_log_prob_and_grad = (
-        jax.pmap(
-            _perdevice_log_prob_and_grad, axis_name="i", in_axes=(0, None, 0)))
+  def get_log_prob_and_grad(dataset, params, net_state):
+    pmap_log_prob_and_grad = jax.pmap(
+      _perdevice_log_prob_and_grad, axis_name="i", in_axes=(0, None, 0))
     log_prob, grad, likelihood, net_state = pmap_log_prob_and_grad(
-        params, net_state, dataset)
+        dataset, params, net_state)
     return (*map(tree_utils.get_first_elem_in_sharded_tree,
                  (log_prob, grad)), likelihood[0], net_state)
 

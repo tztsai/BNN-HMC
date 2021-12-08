@@ -1,0 +1,1 @@
+python run_hmc.py --seed=1 --weight_decay=5 --dir=runs/hmc/cifar10/ --dataset_name=cifar10 --model_name=resnet20_frn_swish --num_iterations=100 --num_burn_in_iterations=10 --max_num_leapfrog_steps=30000 --step_size=1e-5 --trajectory_len=0.24 --subset_train_to=5000

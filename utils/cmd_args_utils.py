@@ -117,7 +117,7 @@ def add_sgd_flags(parser):
 
 
 def save_cmd(dirname, tf_writer):
-  command = " ".join(sys.argv)
+  command = "python " + " ".join(sys.argv)
   with open(os.path.join(dirname, "command.sh"), "w") as f:
     f.write(command)
     f.write("\n")
