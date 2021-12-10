@@ -1,0 +1,1 @@
+python run_hmc.py --seed=0 --weight_decay=10. --temperature=1. --dir=runs/hmc/cifar10_subset10000 --dataset_name=cifar10 --model_name=lenet --step_size=2e-5 --trajectory_len=0.5 --max_num_leapfrog_steps=26000 --num_burn_in_iterations=20 --num_iterations=220 --subset_train_to=10000
