@@ -99,6 +99,14 @@ args = parser.parse_args()
 train_utils.set_up_jax(args.tpu_ip, args.use_float64)
 
 
+if args.debug:  # VSCode remote attach debugging
+  import debugpy
+  debugpy.listen(5678)
+  print('Waiting for VSCode debugger connection...')
+  debugpy.wait_for_client()
+  print('VSCode debugger connected.')
+
+
 def get_u_v_o(params1, params2, params3):
 
   u_params = tree_utils.tree_diff(params2, params1)
@@ -127,7 +135,7 @@ def run_visualization():
 
   dtype = jnp.float64 if args.use_float64 else jnp.float32
   train_set, test_set, task, data_info = data_utils.make_ds_pmap_fullbatch(
-      args.dataset_name, dtype)
+      args.dataset_name, dtype, truncate_to=args.subset_train_to)
 
   net_apply, net_init = models.get_model(args.model_name, data_info)
   net_apply = precision_utils.rewrite_high_precision(net_apply)
