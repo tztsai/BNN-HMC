@@ -1,0 +1,1 @@
+python make_posterior_surface_plot.py --dir runs/hmc/cifar10_subset10000/model_lenet_wd_5.0_stepsize_3e-05_trajlen_0.7_burnin_15_mh_True_temp_1.0_seed_0 --checkpoint1 model_step_16.pt --checkpoint2 model_step_56.pt --checkpoint3 model_step_96.pt

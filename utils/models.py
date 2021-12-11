@@ -43,7 +43,7 @@ _DEFAULT_BN_CONFIG = {
 }
 
 
-def make_lenet5_fn(data_info):
+def make_lenet5_fn(data_info, activation=jax.nn.swish):
   num_classes = data_info["num_classes"]
 
   def lenet_fn(batch, is_training):
@@ -52,17 +52,17 @@ def make_lenet5_fn(data_info):
 
     cnn = hk.Sequential([
         hk.Conv2D(output_channels=6, kernel_shape=5, padding="SAME"),
-        jax.nn.relu,
+        activation,
         hk.MaxPool(window_shape=3, strides=2, padding="VALID"),
         hk.Conv2D(output_channels=16, kernel_shape=5, padding="SAME"),
-        jax.nn.relu,
+        activation,
         hk.MaxPool(window_shape=3, strides=2, padding="VALID"),
         hk.Conv2D(output_channels=120, kernel_shape=5, padding="SAME"),
-        jax.nn.relu,
+        activation,
         hk.MaxPool(window_shape=3, strides=2, padding="VALID"),
         hk.Flatten(),
         hk.Linear(84),
-        jax.nn.relu,
+        activation,
         hk.Linear(num_classes),
     ])
     return cnn(x)
