@@ -165,6 +165,9 @@ def get_image_dataset(name):
 
   test_set, _, _ = load_image_dataset("test", -1, name)
   test_set = next(iter(test_set))
+  
+  test_len = len(train_set) // 5
+  test_set = test_set[:test_len]
 
   data_info = {"num_classes": n_classes}
 

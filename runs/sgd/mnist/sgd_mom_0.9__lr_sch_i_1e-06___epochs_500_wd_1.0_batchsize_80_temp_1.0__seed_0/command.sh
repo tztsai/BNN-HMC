@@ -1,0 +1,1 @@
+python run_sgd.py --seed=0 --weight_decay=1. --dir=runs/sgd/mnist --dataset_name=mnist --model_name=mlp_classification --init_step_size=1e-6 --num_epochs=500 --eval_freq=10 --batch_size=80 --save_freq=100
