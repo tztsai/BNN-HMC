@@ -149,7 +149,7 @@ def run_visualization():
     log_prob = likelihood + prior
     return log_prob, likelihood, prior
 
-  params = [os.path.join(args.dir, getattr(args, ckpt))
+  params = [load_params(os.path.join(args.dir, getattr(args, ckpt)))
             for ckpt in 'checkpoint' + onp.char.array(list('123'))]
 
   # params1 = load_params(args.checkpoint1)
