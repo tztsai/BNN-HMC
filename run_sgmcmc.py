@@ -33,6 +33,7 @@ from jax import numpy as jnp
 import jax
 import argparse
 from collections import OrderedDict
+from tqdm import trange
 
 from core import sgmcmc
 from utils import checkpoint_utils
@@ -187,7 +188,7 @@ def train_model():
                                        log_prior_fn, optimizer, num_batches))
 
   # Train
-  for iteration in range(start_iteration, args.num_epochs):
+  for iteration in trange(start_iteration, args.num_epochs):
 
     (params, net_state, opt_state, logprob_avg, key), iteration_time = (
         sgmcmc_train_epoch(params, net_state, opt_state, train_set, key))

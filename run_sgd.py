@@ -33,6 +33,7 @@ from jax import numpy as jnp
 import jax
 import tensorflow.compat.v2 as tf
 import argparse
+from tqdm import tqdm
 
 from utils import checkpoint_utils
 from utils import cmd_args_utils
@@ -94,6 +95,8 @@ def train_model():
       train_utils.make_sgd_train_epoch(net_apply, log_likelihood_fn,
                                        log_prior_fn, optimizer, num_batches))
 
+  pbar = tqdm(total=args.num_epochs-start_iteration, desc="Iteration")
+  
   # Train
   for iteration in range(start_iteration, args.num_epochs):
 
@@ -131,6 +134,9 @@ def train_model():
     table = logging_utils.make_table(tabulate_dict, iteration - start_iteration,
                                      args.tabulate_freq)
     print(table)
+    
+    pbar.update(1)
+    print()
 
 
 def run():

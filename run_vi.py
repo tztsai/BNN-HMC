@@ -34,6 +34,7 @@ from jax import numpy as jnp
 import jax
 import tensorflow.compat.v2 as tf
 import argparse
+from tqdm import trange
 
 from utils import checkpoint_utils
 from utils import cmd_args_utils
@@ -169,7 +170,7 @@ def train_model():
                                        optimizer, num_batches))
 
   # Train
-  for iteration in range(start_iteration, args.num_epochs):
+  for iteration in trange(start_iteration, args.num_epochs):
 
     (params, net_state, opt_state, elbo_avg, key), iteration_time = (
         sgd_train_epoch(params, net_state, opt_state, train_set, key))

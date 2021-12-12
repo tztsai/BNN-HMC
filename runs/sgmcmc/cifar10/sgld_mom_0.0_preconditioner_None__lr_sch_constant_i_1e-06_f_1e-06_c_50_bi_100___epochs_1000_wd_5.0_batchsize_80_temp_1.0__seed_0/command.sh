@@ -1,0 +1,1 @@
+python run_sgmcmc.py --seed=0 --weight_decay=5. --dir=runs/sgmcmc/cifar10 --dataset_name=cifar10 --model_name=lenet --init_step_size=1e-6 --final_step_size=1e-6 --num_epochs=1000 --num_burnin_epochs=100 --momentum=0. --eval_freq=10 --batch_size=80 --save_freq=100 --subset_train_to=10000

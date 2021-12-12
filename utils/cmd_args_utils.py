@@ -116,7 +116,7 @@ def add_sgd_flags(parser):
       help="Momentum decay parameter for SGD")
 
 
-def save_cmd(dirname, tf_writer):
+def save_cmd(dirname, tf_writer=None):
   command = "python " + " ".join(sys.argv)
   with open(os.path.join(dirname, "command.sh"), "w") as f:
     f.write(command)

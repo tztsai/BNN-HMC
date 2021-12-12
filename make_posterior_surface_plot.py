@@ -131,7 +131,7 @@ def run_visualization():
   subdirname = "posterior_visualization"
   dirname = os.path.join(args.dir, subdirname)
   os.makedirs(dirname, exist_ok=True)
-  cmd_args_utils.save_cmd(dirname, None)
+  cmd_args_utils.save_cmd(dirname)
 
   dtype = jnp.float64 if args.use_float64 else jnp.float32
   train_set, test_set, task, data_info = data_utils.make_ds_pmap_fullbatch(

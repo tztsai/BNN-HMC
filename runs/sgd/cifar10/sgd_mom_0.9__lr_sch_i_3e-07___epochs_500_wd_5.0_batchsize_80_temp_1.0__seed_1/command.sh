@@ -1,0 +1,1 @@
+python run_sgd.py --seed=1 --weight_decay=5. --dir=runs/sgd/cifar10 --dataset_name=cifar10 --model_name=lenet --init_step_size=3e-7 --num_epochs=500 --eval_freq=10 --batch_size=80 --save_freq=500 --subset_train_to=10000
