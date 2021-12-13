@@ -80,7 +80,7 @@ for path in dirs:
     trajlen = float(full_path.split("_")[8])
 #     name = "Gaussian wd={} T=1".format(wd, stepsize)
     alldirs[wd] = full_path
-        
+
 alldirs
 
 # %%
