@@ -90,7 +90,7 @@ dirs = os.listdir(prefix)
 for path in dirs:
     if path[:3] != "sgd":
         continue
-    full_path = os.path.join(prefix, path, "model_step_99.pt")
+    full_path = os.path.join(prefix, path, "model_step_499.pt")
     wd = float(full_path.split("_")[13])
     name = "SGD wd= {}".format(wd)
     sgddirs[name] = full_path
