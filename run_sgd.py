@@ -34,6 +34,7 @@ import jax
 import tensorflow.compat.v2 as tf
 import argparse
 from tqdm import tqdm
+import pandas as pd
 
 from utils import checkpoint_utils
 from utils import cmd_args_utils

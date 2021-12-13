@@ -34,6 +34,7 @@ from jax import numpy as jnp
 import jax
 import tensorflow.compat.v2 as tf
 import argparse
+import pandas as pd
 from tqdm import trange
 
 from utils import checkpoint_utils
@@ -156,6 +157,15 @@ def train_model():
   start_iteration, params, net_state, opt_state, key = (
       checkpoint_utils.parse_sgd_checkpoint_dict(init_dict))
   start_iteration += 1
+
+  if args.eval:
+    _, _, _, test_stats, train_stats = script_utils.evaluate(
+      mean_apply, params, net_state, train_set, test_set, predict_fn, metrics_fns, prior_kl)
+    print('\nTrain performance:')
+    print(pd.Series(train_stats))
+    print('\nTest performance:')
+    print(pd.Series(test_stats))
+    return
 
   # Loading mean checkpoint
   if args.mean_init_checkpoint:
