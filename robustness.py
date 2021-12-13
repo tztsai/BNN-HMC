@@ -49,7 +49,6 @@ def predict_hmc(ds, basepath):
     num_ensembled = 0
     last_test_predictions = None
 
-    breakpoint()
     for ckpt in tqdm.tqdm(ckpts):
         path = os.path.join(basepath, ckpt)
         print(path)
