@@ -10,6 +10,15 @@ cmd_args_utils.add_common_flags(parser)
 args, _ = parser.parse_known_args()
 if _: print('Warning: unknown arguments:', _)
 
+
+if args.debug:  # VSCode remote attach debugging
+    import debugpy
+    debugpy.listen(5678)
+    print('Waiting for VSCode debugger connection...')
+    debugpy.wait_for_client()
+    print('VSCode debugger connected.')
+
+
 # Initialize data, model, losses and metrics
 (train_set, test_set, net_apply, params, net_state, key, log_likelihood_fn,
 log_prior_fn, log_prior_diff_fn, predict_fn, ensemble_upd_fn, metrics_fns,
