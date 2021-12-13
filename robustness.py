@@ -14,6 +14,8 @@ import time
 import tqdm
 from collections import OrderedDict
 
+sys.path.append('.')
+
 from covs.utils import data_utils
 from covs.utils import models
 from covs.utils import metrics
