@@ -1,1 +1,0 @@
-python make_posterior_surface_plot.py --weight_decay=40 --temperature=1. --dir=runs/surface_plots/imdb/ --model_name=cnn_lstm --dataset_name=imdb --checkpoint1=model_step_10.pt --checkpoint2=model_step_50.pt --checkpoint3=model_step_90.pt --limit_bottom=-0.75 --limit_left=-0.75 --limit_right=1.75 --limit_top=1.75 --grid_size=50
