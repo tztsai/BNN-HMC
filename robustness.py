@@ -4,7 +4,7 @@
 # In this notebook we evaluate the samples we collected over different runs on MNIST.
 
 # %%
-import os, sys
+import os, sys, re
 from jax import numpy as jnp
 import numpy as onp
 import jax
@@ -14,17 +14,15 @@ import time
 import tqdm
 from collections import OrderedDict
 
-sys.path.append('..')
-
-from bnn_hmc.utils import data_utils
-from bnn_hmc.utils import models
-from bnn_hmc.utils import metrics
-from bnn_hmc.utils import losses
-from bnn_hmc.utils import checkpoint_utils
-from bnn_hmc.utils import cmd_args_utils
-from bnn_hmc.utils import logging_utils
-from bnn_hmc.utils import train_utils
-from bnn_hmc.utils import precision_utils
+from covs.utils import data_utils
+from covs.utils import models
+from covs.utils import metrics
+from covs.utils import losses
+from covs.utils import checkpoint_utils
+from covs.utils import cmd_args_utils
+from covs.utils import logging_utils
+from covs.utils import train_utils
+from covs.utils import precision_utils
 
 from itertools import chain
 
@@ -43,12 +41,16 @@ net_apply = precision_utils.rewrite_high_precision(net_apply)
 
 # %%
 def predict_hmc(ds, basepath):
-    basepath = os.path.join(basepath, "model_step_{}.pt")
+    ckpts = sorted([p for p in os.listdir(basepath) if p.endswith('pt')], key=lambda p: int(re.search('\d+', p)[0]))
+    print(ckpts)
     ensemble_predictions = None
     num_ensembled = 0
     last_test_predictions = None
-    for i in tqdm.tqdm(range(11, 100)):
-        path = basepath.format(i)
+
+    breakpoint()
+    for ckpt in tqdm.tqdm(ckpts):
+        path = os.path.join(basepath, ckpt)
+        print(path)
         try:
             checkpoint_dict = checkpoint_utils.load_checkpoint(path)
         except:
@@ -68,7 +70,7 @@ def predict_hmc(ds, basepath):
 
 # %%
 alldirs = {}
-prefix = "../runs/hmc/mnist/gaussian"
+prefix = "runs/hmc/mnist/gaussian"
 dirs = os.listdir(prefix)
 for path in dirs:
     full_path = os.path.join(prefix, path)
@@ -82,7 +84,7 @@ alldirs
 
 # %%
 sgddirs = {}
-prefix = "../runs/sgd/mnist/"
+prefix = "runs/sgd/mnist/"
 
 dirs = os.listdir(prefix)
 for path in dirs:
@@ -185,7 +187,7 @@ plt.savefig("gaussian_priors_gaussian_noise.pdf", bbox_inches="tight")
 # ## MNIST-C
 
 # %%
-from bnn_hmc.utils import data_utils
+from covs.utils import data_utils
 import tensorflow_datasets as tfds
 
 all_corruptions = tfds.image_classification.mnist_corrupted._CORRUPTIONS

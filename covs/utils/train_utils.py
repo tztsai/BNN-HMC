@@ -23,12 +23,12 @@ import numpy as onp
 import functools
 from jax.config import config
 
-from bnn_hmc.core import hmc
-from bnn_hmc.utils import data_utils
-from bnn_hmc.utils import losses
-from bnn_hmc.utils import tree_utils
-from bnn_hmc.utils import ensemble_utils
-from bnn_hmc.utils import metrics
+from covs.core import hmc
+from covs.utils import data_utils
+from covs.utils import losses
+from covs.utils import tree_utils
+from covs.utils import ensemble_utils
+from covs.utils import metrics
 
 
 def set_up_jax(tpu_ip, use_float64):

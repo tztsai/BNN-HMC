@@ -1,0 +1,1 @@
+python run_hmc.py --seed=2 --weight_decay=100 --dir=runs/hmc/mnist/gaussian --dataset_name=mnist --model_name=mlp_classification --step_size=1.e-05 --trajectory_len=0.15 --num_iterations=100 --max_num_leapfrog_steps=15500 --num_burn_in_iterations=10

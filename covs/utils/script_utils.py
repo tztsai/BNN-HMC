@@ -24,14 +24,14 @@ import tensorflow.compat.v2 as tf
 
 from collections import OrderedDict
 
-from bnn_hmc.utils import models
-from bnn_hmc.utils import data_utils
-from bnn_hmc.utils import train_utils
-from bnn_hmc.utils import precision_utils
-from bnn_hmc.utils import losses
-from bnn_hmc.utils import checkpoint_utils
-from bnn_hmc.utils import cmd_args_utils
-from bnn_hmc.utils import tree_utils
+from covs.utils import models
+from covs.utils import data_utils
+from covs.utils import train_utils
+from covs.utils import precision_utils
+from covs.utils import losses
+from covs.utils import checkpoint_utils
+from covs.utils import cmd_args_utils
+from covs.utils import tree_utils
 
 
 def print_visible_devices():

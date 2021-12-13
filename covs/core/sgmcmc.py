@@ -21,7 +21,7 @@ from jax import numpy as jnp
 from optax import GradientTransformation
 from typing import Any, NamedTuple
 
-from bnn_hmc.utils import tree_utils
+from covs.utils import tree_utils
 
 
 Momentum = Any # An arbitrary pytree of `jnp.ndarrays`
