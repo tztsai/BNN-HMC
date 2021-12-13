@@ -34,7 +34,6 @@ from jax import numpy as jnp
 import jax
 import tensorflow.compat.v2 as tf
 import argparse
-import pandas as pd
 from tqdm import trange
 
 from utils import checkpoint_utils
@@ -159,6 +158,7 @@ def train_model():
   start_iteration += 1
 
   if args.eval:
+    import pandas as pd
     _, _, _, test_stats, train_stats = script_utils.evaluate(
       mean_apply, params, net_state, train_set, test_set, predict_fn, metrics_fns, prior_kl)
     print('\nTrain performance:')

@@ -57,7 +57,8 @@ def prepare_logging(subdirname, args):
   dirname = os.path.join(args.dir, subdirname)
   os.makedirs(dirname, exist_ok=True)
   tf_writer = tf.summary.create_file_writer(dirname)
-  cmd_args_utils.save_cmd(dirname, tf_writer)
+  if not args.eval:
+    cmd_args_utils.save_cmd(dirname, tf_writer)
   return dirname, tf_writer
 
 

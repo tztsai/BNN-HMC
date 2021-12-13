@@ -4,7 +4,7 @@
 # In this notebook we evaluate the samples we collected over different runs on MNIST.
 
 # %%
-import os
+import os, sys
 from jax import numpy as jnp
 import numpy as onp
 import jax
@@ -13,6 +13,8 @@ import argparse
 import time
 import tqdm
 from collections import OrderedDict
+
+sys.path.append('..')
 
 from bnn_hmc.utils import data_utils
 from bnn_hmc.utils import models

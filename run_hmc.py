@@ -117,6 +117,17 @@ def train_model():
        checkpoint_utils.parse_hmc_checkpoint_dict(init_dict))
   start_iteration += 1
 
+  if args.eval:
+    import pandas as pd
+    _, _, _, test_stats, train_stats = script_utils.evaluate(
+        net_apply, params, net_state, train_set,
+        test_set, predict_fn, metrics_fns, log_prior_fn)
+    print('\nTrain performance:')
+    print(pd.Series(train_stats))
+    print('\nTest performance:')
+    print(pd.Series(test_stats))
+    return
+
   # manually convert all params to dtype
   dtype = script_utils.get_dtype(args)
   params = jax.tree_map(lambda p: p.astype(dtype), params)

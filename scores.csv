@@ -1,0 +1,23 @@
+IMDB	HMC	SGD	SGLD	SGHMC	MFVI
+Train Accuracy					
+Train NLL					
+Train ECE					
+Test Accuracy					
+Test NLL					
+Test ECE					
+					
+MNIST	HMC	SGD	SGLD	SGHMC	MFVI
+Train Accuracy					
+Train NLL					
+Train ECE					
+Test Accuracy					
+Test NLL					
+Test ECE					
+					
+CIFAR10	HMC	SGD	SGLD	SGHMC	MFVI
+Train Accuracy					
+Train NLL					
+Train ECE					
+Test Accuracy					
+Test NLL					
+Test ECE					
