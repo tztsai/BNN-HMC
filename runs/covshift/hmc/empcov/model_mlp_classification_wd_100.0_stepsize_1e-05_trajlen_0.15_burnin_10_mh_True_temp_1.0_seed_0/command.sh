@@ -1,0 +1,1 @@
+covs/run_hmc.py --seed=0 --weight_decay=100 --dir=runs/hmc/mnist/empcov --dataset_name=mnist --model_name=mlp_classification --step_size=1.e-05 --trajectory_len=0.15 --num_iterations=100 --max_num_leapfrog_steps=15500 --num_burn_in_iterations=10 --prior_family=EmpCovMLP --empcov_invcov_ckpt=empcov_covs/mnist_mlp_pca_inv_cov.npy --empcov_wd=100

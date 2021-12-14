@@ -1,0 +1,1 @@
+covs/run_hmc.py --seed=0 --weight_decay=3.0 --dir=runs/hmc/mnist/laplace --dataset_name=mnist --model_name=mlp_classification --step_size=6.e-05 --trajectory_len=0.9 --num_iterations=100 --max_num_leapfrog_steps=15500 --num_burn_in_iterations=10 --prior_family=Laplace
