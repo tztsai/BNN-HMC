@@ -157,6 +157,16 @@ def train_model():
       checkpoint_utils.parse_sgd_checkpoint_dict(init_dict))
   start_iteration += 1
 
+  if args.eval:
+    import pandas as pd
+    _, _, _, test_stats, train_stats = script_utils.evaluate(
+      mean_apply, params, net_state, train_set, test_set, predict_fn, metrics_fns, prior_kl)
+    print('\nTrain performance:')
+    print(pd.Series(train_stats))
+    print('\nTest performance:')
+    print(pd.Series(test_stats))
+    return
+
   # Loading mean checkpoint
   if args.mean_init_checkpoint:
     print("Initializing VI mean from the provided checkpoint")

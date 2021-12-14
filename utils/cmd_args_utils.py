@@ -37,12 +37,15 @@ def add_common_flags(parser):
   parser.add_argument(
       '-d', '--debug', action='store_true')
   parser.add_argument(
+      '--eval', action='store_true')
+  parser.add_argument(
       "--tpu_ip",
       type=str,
       default=None,
       help="Cloud TPU internal ip "
       "(see `gcloud compute tpus list`)")
-  parser.add_argument("--seed", type=int, default=0, help="Random seed")
+  parser.add_argument(
+      "--seed", type=int, default=0, help="Random seed")
   parser.add_argument(
       "--weight_decay",
       type=float,

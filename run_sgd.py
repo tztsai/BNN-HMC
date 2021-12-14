@@ -34,6 +34,7 @@ import jax
 import tensorflow.compat.v2 as tf
 import argparse
 from tqdm import tqdm
+import pandas as pd
 
 from utils import checkpoint_utils
 from utils import cmd_args_utils
@@ -89,6 +90,17 @@ def train_model():
   start_iteration, params, net_state, opt_state, key = (
       checkpoint_utils.parse_sgd_checkpoint_dict(init_dict))
   start_iteration += 1
+
+  if args.eval:
+    import pandas as pd
+    _, _, _, test_stats, train_stats = script_utils.evaluate(
+        net_apply, params, net_state, train_set,
+        test_set, predict_fn, metrics_fns, log_prior_fn)
+    print('\nTrain performance:')
+    print(pd.Series(train_stats))
+    print('\nTest performance:')
+    print(pd.Series(test_stats))
+    return
 
   # Define train epoch
   sgd_train_epoch = script_utils.time_fn(
