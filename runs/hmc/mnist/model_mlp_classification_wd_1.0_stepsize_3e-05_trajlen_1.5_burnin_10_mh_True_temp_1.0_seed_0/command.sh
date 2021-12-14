@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 python run_hmc.py --seed=0 --weight_decay=1. --temperature=1. --dir=runs/hmc/mnist --dataset_name=mnist --model_name=mlp_classification --step_size=3.e-5 --trajectory_len=1.5 --num_iterations=100 --max_num_leapfrog_steps=60000 --num_burn_in_iterations=10
-=======
-python run_hmc.py --seed=0 --weight_decay=2. --temperature=1. --dir=runs/hmc/mnist --dataset_name=mnist --model_name=mlp_classification --step_size=1.e-5 --trajectory_len=1.5 --num_iterations=100 --max_num_leapfrog_steps=60000 --num_burn_in_iterations=10
->>>>>>> 8d51abe9c8d544d46363f14a4bfab8f5302731a9
