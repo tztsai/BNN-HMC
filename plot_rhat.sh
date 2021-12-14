@@ -1,0 +1,1 @@
+python r_hat.py --dirs runs/covshift/hmc/gaussian/model_mlp_classification_wd_100.0_stepsize_1e-05_trajlen_0.15_burnin_10_mh_True_temp_1.0_seed_2/ runs/hmc/mnist/model_mlp_classification_wd_1.0_stepsize_3e-05_trajlen_1.5_burnin_10_mh_True_temp_1.0_seed_0/
