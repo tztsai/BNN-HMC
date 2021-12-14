@@ -22,6 +22,7 @@ from jax import numpy as jnp
 import jax
 import tensorflow.compat.v2 as tf
 import argparse
+from tqdm import trange
 
 from covs.utils import checkpoint_utils
 from covs.utils import cmd_args_utils
@@ -107,7 +108,7 @@ def train_model():
     "Gradient data types {} do not match specified data type {}".format(
       grad_types, dtype))
   
-  for iteration in range(start_iteration, args.num_iterations):
+  for iteration in trange(start_iteration, args.num_iterations):
 
     in_burnin = (iteration < args.num_burn_in_iterations)
     do_mh_correction = (not args.no_mh) and (not in_burnin)
@@ -164,7 +165,7 @@ def train_model():
 
     table = logging_utils.make_table(
       tabulate_dict, iteration - start_iteration, args.tabulate_freq)
-    print(table)
+    print('\n' + str(table))
 
 
 if __name__ == "__main__":

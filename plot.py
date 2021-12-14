@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
-from matplotlib.ticker import Li
 
 sns.set()
 df = pd.read_csv('scores.csv', sep='\t', header=None)
